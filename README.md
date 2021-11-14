@@ -42,6 +42,16 @@ The first command will build the source of your application. The second command 
 
 You can find your API Gateway Endpoint URL in the output values displayed after deployment.
 
+## Prepare DynamoDB data before you execute this function
+
+When you execute this function you need to execute data prepare script.
+
+```bash
+$ chmod +x setup/add_ddb_data.sh
+$ setup/add_ddb_data.sh
+
+```
+
 ## Use the SAM CLI to build and test locally
 
 Build your application with the `sam build --use-container` command.
