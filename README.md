@@ -1,6 +1,8 @@
-# DDD on AWS Lambda sample - vaccination_reservation_demo
+# JAWS Pankration 2021 - DDD on AWS Lambda sample
 
-This project contains sample code for DDD on AWS Lambda. This code shows you how to implement and do unit testing your domain models and ports and adapters classes on AWS Lambda function. This lambda function includes sample domain models regarding vaccination reservation and these are loosly coupled from infrastructure code such as a repository of Amazon DynamoDB. This applicaiton use [hexagonal architecture](<https://en.wikipedia.org/wiki/Hexagonal_architecture_(software)>) or ports and adapters architecture by [Alistair Cockburn](https://en.wikipedia.org/wiki/Alistair_Cockburn). It also use [injector](https://github.com/alecthomas/injector) Python library to inject ports and adapters classes. It elables to do unit testing easily because you can inject dummy instances into target classes. For more details, see sample unit test code in this project. (./tests/unit folder)
+## What is this project?
+
+This project contains sample code for AWS Lambda with domain models. I presented the session about how to implement an AWS Lambda function with domain models at [JAWS Pankration 20201](https://jawspankration2021.jaws-ug.jp/en). This repository shows you how to implement your domain models, ports and adapters classes on AWS Lambda function. This project includes sample domain models regarding a vaccination reservation system and these are loosly coupled from infrastructure code such as accessing a DynamoDB table using ports and adapters classes. This application is designed by concept of [hexagonal architecture](<https://en.wikipedia.org/wiki/Hexagonal_architecture_(software)>) or ports and adapters architecture by [Alistair Cockburn](https://en.wikipedia.org/wiki/Alistair_Cockburn). This application also uses [injector](https://github.com/alecthomas/injector) Python library to inject ports and adapters classes. It elables you to execute unit testing more easily because you can inject dummy instances into target classes. For more details, see sample unit testing code in this project. (./tests/unit folder)
 
 ## Domain Models
 
