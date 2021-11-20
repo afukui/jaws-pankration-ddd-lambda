@@ -1,3 +1,4 @@
+from logging import exception
 import os
 import boto3
 from botocore.exceptions import ClientError
@@ -25,10 +26,14 @@ class DDBRecipientAdapter(IRecipientAdapter):
                 last_name = item['last_name']
                 age = item['age']
                 recipient = Recipient(recipient_id, email, first_name, last_name, age)
+                print("in the ddb_recipient_adapter")
+                print(recipient)
 
                 if 'slots' in item:
                     slots = item['slots']
                     for slot in slots:
+                        print(slot)
+
                         slot_id = slot['slot_id']
                         reservation_date = slot['reservation_date']
                         location = slot['location']
@@ -38,12 +43,16 @@ class DDBRecipientAdapter(IRecipientAdapter):
                             location))
 
                 return recipient
+                
+            print("Item not found!")
             return None
 
         except ClientError as e:
             print(e.response['Error']['Message'])
             return None
-
+        except Exception as e:
+            print(e)
+            return None
 
     def save(self, recipient:Recipient) -> bool:
         try:
@@ -56,7 +65,6 @@ class DDBRecipientAdapter(IRecipientAdapter):
                 "slots": []
             }
             
-            i:int = 0
             slots = recipient.slots
             for slot in slots:
                 slot_item = {
@@ -65,7 +73,6 @@ class DDBRecipientAdapter(IRecipientAdapter):
                     "location": slot.location
                 }
                 item['slots'].append(slot_item)
-                i += 1
 
             self.__table.put_item(Item=item)
             return True

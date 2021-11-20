@@ -11,6 +11,10 @@ class ReservationService:
     def add_reservation(self, recipient_id:str, slot_id:str) -> bool:
         recipient = self.__recipient_port.recipient_by_id(recipient_id)
         slot = self.__slot_port.slot_by_id(slot_id)
+
+        if recipient == None or slot == None:
+            return False
+
         print(f"recipient: {recipient.first_name}, slot date: {slot.reservation_date}")
         ret = recipient.add_reserve_slot(slot)
         if ret == True:

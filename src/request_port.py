@@ -13,5 +13,5 @@ class RequestPort:
         if self.__reservation_service.add_reservation(recipient_id, slot_id) == True:
             status = Status(200, "The recipient's reservation is added.")
         else:
-            statsu = Status(200, "The recipient's reservation is NOT added!")
+            status = Status(200, "The recipient's reservation is NOT added!")
         return status
